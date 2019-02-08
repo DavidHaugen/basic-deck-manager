@@ -9,7 +9,11 @@
 </head>
 <body>
   <div class="deck-container">
-    <p>your deck</p>
+      <div class="card deck">
+          <form id="view-deck">
+              <button type="submit">Log deck</button>
+          </form>
+        </div>
   </div>
   <div class="button-container">
     <form id="draw-card">
@@ -21,21 +25,35 @@
     <form id="end-turn">
         <button type="submit">End turn</button>
     </form>
+    
+    <form class="add-card">
+        <label for="add-card"></label>
+        <input type="number" name="add-card" placeholder="Enter card id" id="card-id-input">
+        <button type="submit">Add card</button>
+    </form>
   </div>
   <div class="discard">
 
   </div>
-  <div class="company">
-
-  </div>
-
+  
+<h1>
+  Your hand
+</h1>
   <div class="hand">
-
+  </div>
   </div>
 
-  <div class="card">
+  <h1>
+      Your Company
+    </h1>
+  <div class="company">
+    
+    </div>
+  <!-- <div class="card">
       <div id="mydivheader"></div>
       <div class="card-text">
+      </div>
+      <div class="card-id">
       </div>
       <div class="card-button-container">
         <form class="improvement">
@@ -48,7 +66,7 @@
             <button type="submit">Permanently discard card</button>
         </form>
       </div>
-    </div>
+    </div> -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="store.js"></script>
