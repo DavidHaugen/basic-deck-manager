@@ -20,7 +20,7 @@ function generateHandHtml() {
         <form class="discard-card"  id="discard-card-button" data-id="${card.id}">
             <button type="submit">Discard card</button>
         </form>
-        <form class="perm-discard-card" id="perm-discard-card-button" data-id="${card.id}">
+        <form class="perm-discard-card" id="perm-discard-card-button" data-name="${card.name}"data-id="${card.id}">
             <button type="submit">Permanently discard card</button>
         </form>
       </div>
@@ -45,7 +45,7 @@ function generateImprovementsHtml() {
         <form class="discard-card"  id="discard-card-button" data-id="${card.id}">
             <button type="submit">Discard card</button>
         </form>
-        <form class="perm-discard-card" id="perm-discard-card-button" data-id="${card.id}">
+        <form class="perm-discard-card" id="perm-discard-card-button" data-name="${card.name}" data-id="${card.id}">
             <button type="submit">Permanently discard card</button>
         </form>
       </div>
@@ -179,10 +179,12 @@ function handlePermDiscardFromHand(){
   $('body').on('submit', '.hand .perm-discard-card', function(event){
     event.preventDefault();
     const cardId = $(this).data('id');
+    const cardName = $(this).data('name');
     store.hand = store.hand.filter((card) => card.id !== cardId);
-    // eslint-disable-next-line no-console
-    console.log(`Permanently discarded cardID: ${cardId}`);
     render();
+    $('.message').html(`
+    <p><span class='card-name'>${cardName}</span> was permanently discarded.</p><p>card id: <span class='card-id'>${cardId}</span></p>
+    `);
   });
 }
 
@@ -190,9 +192,11 @@ function handlePermDiscardFromImprovements(){
   $('body').on('submit', '.company .perm-discard-card', function(event){
     event.preventDefault();
     const cardId = $(this).data('id');
+    const cardName = $(this).data('name');
     store.improvements = store.improvements.filter((card) => card.id !== cardId);
-    // eslint-disable-next-line no-console
-    console.log(`Permanently discarded cardID: ${cardId}`);
+    $('.message').html(`
+    <p><span class='card-name'>${cardName}</span> was permanently discarded.</p><p>card id: <span class='card-id'>${cardId}</span></p>
+    `);
     render();
   });
 }
