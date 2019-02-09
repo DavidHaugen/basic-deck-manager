@@ -1,3 +1,5 @@
+<!-- you left off styling the cards. Cards need to have flex added as a class in index.js, then you need to fix the ugliness of the buttons and put them back inside the cards. Go get it. -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,69 +7,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Get-Hacked</title>
+  <link href="https://fonts.googleapis.com/css?family=BioRhyme|Space+Mono" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <div class="deck-container">
-      <div class="card deck">
-          <form id="view-deck">
-              <button type="submit">Log deck</button>
+  <main>
+    <div class="controls flex">
+      <!-- <div class="flex" id="decks"> -->
+            <div class="deck flex">
+              <div>
+                <h2 class="card-count">
+                  
+                  </h2>
+                  <form id="view-deck">
+                      <button type="submit">Log deck</button>
+                  </form>
+              </div>
+                  
+                  <div>
+                <form id="draw-card">
+                    <button type="submit">Draw card</button>
+                  </form>
+                <form id="draw-five">
+                    <button type="submit">Draw 5 cards</button>
+                  </form>
+                </div>
+               
+                
+               
+            </div>
+
+            <div class="deck flex">
+              <div>
+                <h2 class="discard-count">
+                  </h2>
+                  <form id="view-discard">
+                      <button type="submit">Log deck</button>
+                  </form>
+                </div>
+                  <form id="move-to-deck">
+                      <button type="submit">Move to deck</button>
+                  </form>
+               
+                
+            </div>
+
+      <div class="button-container flex">
+        <div>
+          <div id="add-remove-container">
+            <form class="add-card">
+                <label for="add-card"></label>
+                <input type="number" name="add-card" placeholder="Enter card id" id="card-id-input">
+                <button type="submit">Add card</button>
+
+            </form>
+
+            
+            <form class="remove-card">
+                <label for="remove-card"></label>
+                <input type="number" name="remove-card" placeholder="Enter card id" id="remove-card-id-input">
+                <button type="submit">Remove card</button>
+            </form>
+          </div>
+          <form id="shuffle">
+              <button type="submit">Shuffle deck</button>
           </form>
         </div>
-  </div>
-  <div class="button-container">
-    <form id="draw-card">
-      <button type="submit">Draw card</button>
-    </form>
-   <form id="draw-five">
-      <button type="submit">Draw 5 cards</button>
-    </form>
-    <form id="end-turn">
-        <button type="submit">End turn</button>
-    </form>
-    
-    <form class="add-card">
-        <label for="add-card"></label>
-        <input type="number" name="add-card" placeholder="Enter card id" id="card-id-input">
-        <button type="submit">Add card</button>
-    </form>
-  </div>
-  <div class="discard">
+          <form id="end-turn">
+              <button type="submit">End turn</button>
+          </form>
+      </div>
 
-  </div>
-  
-<h1>
-  Your hand
-</h1>
-  <div class="hand">
-  </div>
-  </div>
-
-  <h1>
-      Your Company
-    </h1>
-  <div class="company">
-    
+      <div class="message-container flex">
+          <p class = "message"></p>
+          <form class="clear-form">
+            <button id ="clear">Clear</button>
+          </form>
+      </div>
     </div>
-  <!-- <div class="card">
-      <div id="mydivheader"></div>
-      <div class="card-text">
+   
+    <div class="hand-container">
+      <h2>
+        Your hand
+      </h2>
+      <div class="hand flex">
       </div>
-      <div class="card-id">
-      </div>
-      <div class="card-button-container">
-        <form class="improvement">
-          <button type="submit"  id="improvement-button">Play as improvement</button>
-        </form>
-        <form class="discard-card"  id="discard-card-button">
-            <button type="submit">Discard card</button>
-        </form>
-        <form class="perm-discard-card" id="perm-discard-card-button">
-            <button type="submit">Permanently discard card</button>
-        </form>
-      </div>
-    </div> -->
+    </div>
+    <div class="company-container">
+        <h2>
+          Company
+        </h2>
+          <div class="company flex">
+        </div>
+    </div>
+  </div>
 
+    
+
+  </main>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="store.js"></script>
   <script src="index.js"></script>

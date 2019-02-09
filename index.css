@@ -1,31 +1,221 @@
+/* font-family: 'BioRhyme', serif;
+font-family: 'Space Mono', monospace; */
+
+html{
+  background-color: #c2d1cf;
+}
+
+main *{
+  font-family: 'Space Mono', monospace;
+  position: relative;
+  box-sizing: border-box;
+  color: #292929;
+}
+
 .card{
-  width: 200px;
-  height: 300px;
+  width: 270px;
+  height: 370px;
   border: 1px solid #d3d3d3;
   border-radius: 6px;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 1 auto;
+  padding: 5px;
+  margin: 3px;
+  background-color: #f4f3f3
+}
+
+.deck h2{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card .card-text{
+  max-height: 150;
+  overflow: auto;
+}
+
+.card button{
+  margin-top: 3px;
+}
+
+#improvement-button{
+  margin-top: 0px;
+}
+
+.card p.card-id{
+  text-align: left;
+  color: #d4533b;
+}
+
+#draw-five{
+  margin-top: 7px;
+}
+
+#shuffle{
+  margin-top: 17px;
+}
+
+#end-turn button{
+  width: 150px;
+}
+
+input{
+  border-radius: 2px;
+  border-style: none;
+  padding-left: 3px;
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.card h3{
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+#view-deck, #view-discard{
+  margin-top: 7px;
 }
 
 button{
   border-radius: 3px;
   border-style: none;
+  background-color: rgb(218, 218, 218);
+  min-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
 }
 
 .card-button-container{
   text-align: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 5px;
 }
 
+.remove-card{
+  margin-top: 7px;
+}
+
+.button-container{
+  flex-direction: column;
+  background-color: #b1bed5;
+  border-radius: 6px;
+  padding: 17px 23px;
+  height: 300px;
+  min-width: 330px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.message-container{
+  flex-direction: column;
+  background-color: #b1bed5;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 6px;
+  padding: 17px 23px;
+  height: 300px;
+  width: 330px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-container .card-name{
+  color: #0a3055;
+}
+
+.message-container .card-id{
+  color: #b22222;
+}
+
 .perm-discard-card button{
   background-color: rgb(255, 163, 163)
 }
 
-.card{
-  position: relative;
+.controls{
+  flex-direction: row;
+  padding-left: 50px;
+  padding-top: 10px;
+}
 
+.card-name{
+  color: blue;
+}
+
+h2{
+  font-family: 'BioRhyme', serif;
+}
+
+.deck{
+  border-right: 3px solid #dfdfdf;
+  border-bottom: 3px solid #dfdfdf;
+  width: 200px;
+  height: 300px;
+  border: 1px solid #d3d3d3;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 1 auto;
+  padding: 10px;
+  margin: 3px;
+  background-color: #f4f3f3;
+  margin-left: 37px;
+}
+
+.flex {
+  display: flex;
+}
+
+/* #decks{
+  justify-content: space-around;
+  flex-direction: row;
+  width: 650px;  
+  
+} */
+
+.hand{
+  flex-wrap: wrap;
+}
+
+.hand-container{
+  min-height: 450px;
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
+.hand-container h2{
+  border-top: 5px solid #f4f3f3;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.company{
+  flex-wrap: wrap;
+}
+
+.company-container{
+  min-height: 450px;
+  margin: 20px;
+  margin-top: 0px;
+}
+
+.company-container h2{
+  border-top: 5px solid #f4f3f3;
+  padding-top: 10px;
+  padding-left: 15px;
 }
 

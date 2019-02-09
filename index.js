@@ -1,20 +1,19 @@
 'use strict';
 /* global store, $*/
 
+
 function generateHandHtml() {
   let result = store.hand.map((card) => {
     return `
-    <div class="card">
+    <div class="card flex">
       <div id="mydivheader">
-        <h2>${card.name}</h2>
+        <h3>${card.name}</h3>
       </div>
       <div class="card-text">
-        <p>${card.text}</p>
-      </div>
-      <div class="card-id">
-        <p>Card ID: ${card.id}</>
+        <p>${card.outcome}</p>
       </div>
       <div class="card-button-container">
+      <p class="card-id">Card ID: ${card.id}</>
         <form class="improvement" data-id="${card.id}">
           <button type="submit"  id="improvement-button">Play as improvement</button>
         </form>
@@ -34,17 +33,15 @@ function generateHandHtml() {
 function generateImprovementsHtml() {
   let result = store.improvements.map((card) => {
     return `
-    <div class="card">
+    <div class="card flex">
       <div id="mydivheader">
-        <h2>${card.name}</h2>
+        <h3>${card.name}</h3>
       </div>
       <div class="card-text">
-        <p>${card.text}</p>
-      </div>
-      <div class="card-id">
-        <p>Card ID: ${card.id}</>
+        <p>${card.outcome}</p>
       </div>
       <div class="card-button-container">
+        <p class="card-id">Card ID: ${card.id}</>
         <form class="discard-card"  id="discard-card-button" data-id="${card.id}">
             <button type="submit">Discard card</button>
         </form>
@@ -61,14 +58,20 @@ function generateImprovementsHtml() {
 function render(){
   $('.hand').html(generateHandHtml());
   $('.company').html(generateImprovementsHtml());
+  $('.card-count').html(`Cards in deck: ${store.deck.length}`);
+  $('.discard-count').html(`Cards in discard: ${store.discard.length}`);
 }
 
 function handleDrawCard(){
   $('#draw-card').on('submit', function(event){
     event.preventDefault();
     const toHand = store.deck.splice(0,1);
-    store.hand.push(toHand[0]);
-    render();
+    if(toHand.length === 0){
+      render();
+    } else{
+      store.hand.push(toHand[0]);
+      render();
+    }
   });
 }
 
@@ -86,7 +89,7 @@ function handleEndTurn(){
   $('#end-turn').on('submit', function(event){
     event.preventDefault();
     const toDiscard = store.hand.splice(0);
-    store.deck.push(toDiscard);
+    toDiscard.forEach((card) => store.discard.push(card));
     render();
   });
 }
@@ -96,6 +99,28 @@ function handleAddCard(){
     event.preventDefault();
     const idToAdd = parseInt($('#card-id-input').val(), 10);
     store.deck.push(store.masterDeck.find((card) => card.id === idToAdd));
+    const cardName = store.masterDeck.find((card) => card.id === idToAdd).name;
+    $('.message').html(`
+    <p><span class='card-name'>${cardName}</span> was added to your deck.</p><p>card id: <span class='card-id'>${idToAdd}</span></p>
+    `);
+    $('#card-id-input').val('');
+    render();
+  });
+}
+
+function handleRemoveCard(){
+  $('.remove-card').on('submit', function(event){
+    event.preventDefault();
+    const idToRemove = parseInt($('#remove-card-id-input').val(), 10);
+    let cardIndex = store.deck.findIndex((card) => card.id === idToRemove);
+    if(cardIndex === -1){cardIndex = null;}
+    const cardName = store.masterDeck.find((card) => card.id === idToRemove).name;
+    $('.message').html(`
+    <p><span class='card-name'>${cardName}</span> was removed from your deck.</p><p>card id: <span class='card-id'>${idToRemove}</span></p>
+    `);
+    $('#remove-card-id-input').val('');
+    store.deck.splice(cardIndex,1);
+    render();
   });
 }
 
@@ -104,6 +129,14 @@ function viewDeck(){
     event.preventDefault();
     // eslint-disable-next-line no-console
     console.log(store.deck);
+  });
+}
+
+function viewDiscard(){
+  $('#view-discard').on('submit', function(event){
+    event.preventDefault();
+    // eslint-disable-next-line no-console
+    console.log(store.discard);
   });
 }
 
@@ -164,27 +197,42 @@ function handlePermDiscardFromImprovements(){
   });
 }
 
-// function shuffle(deck) {
-//   var ctr = deck.length, temp, index;
-
-// // While there are elements in the array
-//   while (ctr > 0) {
-// // Pick a random index
-//       index = Math.floor(Math.random() * ctr);
-// // Decrease ctr by 1
-//       ctr--;
-// // And swap the last element with it
-//       temp = deck[ctr];
-//       deck[ctr] = deck[index];
-//       deck[index] = temp;
-//   }
-//   return deck;
-// }
-// var myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-// console.log(shuffle(myArray));
-// expected output: [5,3,0,9,8,2,1,4,7,6]
+function handleShuffle(){
+  $('#shuffle').on('submit', function(event){
+    event.preventDefault();
+    shuffle(store.deck);
+  });
+}
 
 
+function shuffle(deck) {
+  var ctr = deck.length, temp, index;
+  while (ctr > 0) {
+    index = Math.floor(Math.random() * ctr);
+    ctr--;
+    temp = deck[ctr];
+    deck[ctr] = deck[index];
+    deck[index] = temp;
+  }
+  return deck;
+}
+
+function handleClear(){
+  $('.clear-form').on('submit', function(event){
+    event.preventDefault();
+    $('.message').html('<p></p>');
+  });
+}
+
+function moveToDeck(){
+  $('#move-to-deck').on('submit', function(event){
+    event.preventDefault();
+    const toMove = store.discard.splice(0);
+    toMove.forEach((card) => store.deck.push(card));
+    render();
+    shuffle(store.deck);
+  });
+}
 
 function main(){
   handleDrawCard();
@@ -198,6 +246,11 @@ function main(){
   handleDiscardFromHand();
   handleDiscardFromImprovements();
   handlePermDiscardFromImprovements();
+  handleShuffle();
+  viewDiscard();
+  handleRemoveCard();
+  handleClear();
+  moveToDeck();
 }
 
 $(main);

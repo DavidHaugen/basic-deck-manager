@@ -37,7 +37,7 @@ let store = (function () {
       id: 5,
       name: 'Intranet',
       outcome:
-        'At the start of each draft, draw one extra card at the top of the deck at nocost,
+        'At the start of each draft, draw one extra card at the top of the deck at nocost',
       employee: 1,
       cost: 1
     },
@@ -572,48 +572,89 @@ let store = (function () {
 
   const deck = [
     {
-      id:1,
-      name: 'broadband',
-      text: 'Gain $100 at the start of every turn'
+      id: 1,
+      name: 'Broadband',
+      outcome: 'Gain $100 at the start of every turn',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 2,
+      name: 'Phishing',
+      outcome:
+        'Take control of another player\'s improvement card and add it to your \'base\'',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 3,
+      name: 'Modem',
+      outcome: 'Gain $200 at the start of every turn',
+      employee: 1,
+      cost: 1
     },
     {
       id: 4,
-      name: 'Phishing',
-      text: 'Take control of another player\'s improvement card'
+      name: 'Malware',
+      outcome: 'Destroy one improvement on up to two different players',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 5,
+      name: 'Intranet',
+      outcome:
+        'At the start of each draft, draw one extra card at the top of the deck at nocost',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 6,
+      name: 'Firewall',
+      outcome:
+        'Do not play this card until you\'re being attacked.  Protects against one hacking event.',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 7,
+      name: 'Cybercrime',
+      outcome: 'Steal $500 from another player\'s assets',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 8,
+      name: 'SQL Injection',
+      outcome:
+        'Play on an opponent\'s improvement. Until  this card is removed, gain 100 each time they draw a card. ',
+      employee: 1,
+      cost: 1
     },
     {
       id: 9,
-      name: 'Malware',
-      text: 'Destroy something'
+      name: 'Stealing Bandidh',
+      outcome:
+        'The player to your left assembles their improvement cards in their hand. Choose a card at random and add it to your hand.',
+      employee: 1,
+      cost: 1
+    },
+    {
+      id: 10,
+      name: 'LAN Party',
+      outcome:
+        'Select an opponent. Remove $1000 from their account. All other players in the game receive 200$. Discard this card from the game.',
+      employee: 1,
+      cost: 1
     },
     {
       id: 11,
-      name: 'Greg </3',
-      text:
-        'Destroy two player improvement cards, or take one improvement card and put in your hand'
+      name: 'Percent of a Percent',
+      outcome:
+        'Improvement- If another player were to gain more than $1000 in a single turn, the owner of this improvement would also gain $500.  ',
+      employee: 1,
+      cost: 1
     },
-    {
-      id: 12,
-      name: 'Modem',
-      text: 'Gain 200 at the start of every turn'
-    },
-    {
-      id: 13,
-      name: 'Intranet',
-      text:
-        'At the start of each draft, draw one extra card at the top of the deck at no cost'
-    },
-    {
-      id: 14,
-      name: 'Firewall',
-      text:
-        'Do not play this card until you\'re being attacked. Protects against one hacking event'
-    },
-    {
-      id: 15,
-      name: 'Cybercrime',
-      text: 'Steal $500 from another player\'s assets'
-    }
   ];
 
   const improvements = [];
