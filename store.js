@@ -9,564 +9,650 @@ let store = (function () {
       name: 'Broadband',
       outcome: 'Gain $100 at the start of every turn',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Improvement'
     },
     {
       id: 2,
       name: 'Phishing',
       outcome:
-        'Take control of another player\'s improvement card and add it to your \'base\'',
-      employee: 1,
-      cost: 1
+        'Take control of another player\'s improvement card and add it to your Company',
+      employee: 3,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 3,
       name: 'Modem',
       outcome: 'Gain $200 at the start of every turn',
-      employee: 1,
-      cost: 1
+      employee: 2,
+      cost: 300,
+      type: 'Improvement'
     },
     {
       id: 4,
       name: 'Malware',
       outcome: 'Destroy one improvement on up to two different players',
-      employee: 1,
-      cost: 1
+      employee: 6,
+      cost: 500,
+      type: 'Attack'
     },
     {
       id: 5,
       name: 'Intranet',
       outcome:
-        'At the start of each draft, draw one extra card at the top of the deck at nocost',
-      employee: 1,
-      cost: 1
+        'At the start of each draft, draw one extra card at the top of the deck at nocost You may choose whether or not to keep this card',
+      employee: 3,
+      cost: 200,
+      type: 'Improvement'
     },
     {
       id: 6,
       name: 'Firewall',
       outcome:
         'Do not play this card until you\'re being attacked.  Protects against one hacking event.',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 300,
+      type: 'Defense'
     },
     {
       id: 7,
       name: 'Cybercrime',
-      outcome: 'Steal $500 from another player\'s assets',
-      employee: 1,
-      cost: 1
+      outcome: 'Steal $500 from another player',
+      employee: 3,
+      cost: 700,
+      type: 'Attack'
     },
     {
       id: 8,
       name: 'SQL Injection',
       outcome:
-        'Play on an opponent\'s improvement. Until  this card is removed, gain 100 each time they draw a card. ',
-      employee: 1,
-      cost: 1
+        'Play on an opponent\'s Company. Until  this card is removed, gain 100 each time they draw a card. ',
+      employee: 2,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 9,
-      name: 'Stealing Bandidh',
+      name: 'Stealing Bandwidth',
       outcome:
         'The player to your left assembles their improvement cards in their hand. Choose a card at random and add it to your hand.',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 10,
       name: 'LAN Party',
       outcome:
-        'Select an opponent. Remove $1000 from their account. All other players in the game receive 200$. Discard this card from the game.',
-      employee: 1,
-      cost: 1
+        'Select an opponent. Remove $1000 from their account. All other players in the game receive 200$. Permanently discard this card.',
+      employee: 7,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 11,
       name: 'Percent of a Percent',
       outcome:
-        'Improvement- If another player were to gain more than $1000 in a single turn, the owner of this improvement would also gain $500.  ',
-      employee: 1,
-      cost: 1
+        'If another player gains more than $500 in a single turn, the owner of this improvement also gains $200.  ',
+      employee: 6,
+      cost: 400,
+      type: 'Improvement'
     },
     {
       id: 12,
-      name: 'Throttle Bandwitdth',
+      name: 'Throttle Bandwidth',
       outcome:
-        'Play this card on another player\'s company. They can only play 1 card a turn while this card is in their company. That player may pay $300 to discard this card. Permanently discard this card. ',
-      employee: 1,
-      cost: 1
+        'Play this card on another player\'s Company. They can only play 1 card a turn while this card is in their Company. That player may pay $300 to permanently discard this card.',
+      employee: 6,
+      cost: 500,
+      type: 'Attack'
     },
     {
       id: 13,
       name: 'Let me talk to a live person.',
-      outcome: 'Improvement - You get one free action this turn ',
-      employee: 1,
-      cost: 1
+      outcome: 'You get one free action this turn.',
+      employee: 0,
+      cost: 0,
+      type: 'Improvement'
     },
     {
       id: 14,
       name: 'Big sale',
       outcome:
-        'Improvement - While this card is in play, you only pay half the listedcostwhen drafting cards. If this card is later removed from play, you must pay $500',
-      employee: 1,
-      cost: 1
+        'While this card is in play, you only pay half the listedcostwhen drafting cards. If this card is later discarded, you must pay $500.',
+      employee: 5,
+      cost: 500,
+      type: 'Improvement'
     },
     {
       id: 15,
       name: 'Email from a Nigerian prince',
       outcome:
-        'Give this card to another player. They must discard one Improvement currently in play, of their choosing',
-      employee: 1,
-      cost: 1
+        'Place this card in a random player\'s discard pile. They must discard one Improvement currently in play, of their choosing',
+      employee: 0,
+      cost: 200,
+      type: 'Attack'
     },
     {
       id: 16,
       name:
         'One of those racks of phones doing something online to make money',
       outcome:
-        'Improvement - On your turn, you may discard any number of cards from your hand. Place them face-down next on this card after showing them to your opponents. These cards are not in play and you gain none of their stated affects. During the Get Money phase, you gain $100 for every card placed on this card. ',
-      employee: 1,
-      cost: 1
+        'On your turn, you may discard any number of cards from your hand. Place them face-down on this card after showing them to your opponents. These cards are not in play and you gain none of their stated affects. During the Get Money phase, you gain $100 for every card placed on this card.',
+      employee: 9,
+      cost: 500,
+      type: 'Improvement'
     },
     {
       id: 17,
       name: 'Bloatware',
       outcome:
-        'Improvement - May be played on another player\'s company. On your turn, you must select another player. Draw the top card from their draw pile and add it to your discard pile. ',
-      employee: 1,
-      cost: 1
+        'May be played on any player\'s company. On their turn, they must select another player. Draw the top card from their draw pile and add it to your discard pile.',
+      employee: 4,
+      cost: 300,
+      type: 'Improvement'
     },
     {
       id: 18,
       name: 'Smart Assistant',
-      outcome: 'Improvement- Draw a card',
+      outcome: 'Draw a card once per turn.',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Improvement'
     },
     {
       id: 19,
       name: 'Donate plasma',
       outcome: 'Gain $100',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 0,
+      type: 'Regular'
     },
     {
       id: 20,
       name: 'If this, then that',
       outcome:
-        'May be played at any time. When another player draws a card, discards a card, or plays a card, you may do the same action for free. ',
-      employee: 1,
-      cost: 1
+        'May be played at any time. When another player draws a card, discards a card, or plays a card, you may do the same action for free. Cards drawn this way can be kept until your next turn.',
+      employee: 0,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 21,
-      name: 'id\'t need that anyway',
+      name: 'Didn\'t need that anyway',
       outcome: 'Discard a card. Gain $200',
       employee: 1,
-      cost: 1
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 22,
       name: 'VPN',
-      outcome: 'Block one attack.\n\ncost: $500\nEmployees: 0',
+      outcome: 'Block one attack.',
       employee: 1,
-      cost: 1
+      cost: 200,
+      type: 'Defense'
     },
     {
       id: 23,
       name: 'Not-so-secretly an MLM',
-      outcome:
-        'If you purchase anemployeecard this round, gain a second copy of that card',
-      employee: 1,
-      cost: 1
+      outcome: 'If you purchase anemployeecard this round, gain a second copy of that card',
+      employee: 3,
+      cost: 500,
+      type: 'Regular'
     },
     {
       id: 24,
       name: 'Micro-transactions',
-      outcome: 'Gain $1000. You may not play any other cards this round. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Gain $1000. You may not play any other cards this round.',
+      employee: 12,
+      cost: 500,
+      type: 'Regular'
     },
     {
       id: 25,
       name: 'Thief',
-      outcome:
-        'Discard one of your improvements. Steal one improvement from another player',
-      employee: 1,
-      cost: 1
+      outcome: 'Discard one of your own improvements. Steal one improvement from another player',
+      employee: 7,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 26,
       name: 'Encryption',
-      outcome:
-        'You may use an asset/improvement card that typically would not work for your character/company',
-      employee: 1,
-      cost: 1
+      outcome: 'You may use an Improvement card that typically would not work for your character/company',
+      employee: 0,
+      cost: 100,
+      type: 'Regular'
     },
     {
       id: 27,
       name: 'Cis Key',
       outcome:
         'Look at the player to your left\'s hand. You will play their next turn for them.',
-      employee: 1,
-      cost: 1
+      employee: 9,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 28,
       name: 'Net Troll',
-      outcome:
-        'The player with the most net worth must discard an improvement with a minimum value of $500 of their choice.',
-      employee: 1,
-      cost: 1
+      outcome: 'The player with the most net worth must discard an Improvement with a minimum value of $500 of their choice. If they do not have an Improvement worth $500, they must discard the highest value Improvement.',
+      employee: 4,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 29,
-      name: 'Ads. Everywhere. As many as you can fit. ',
-      outcome: 'Discard 5 cards. Gain $700. ',
-      employee: 1,
-      cost: 1
+      name: 'Ads. Everywhere. As many as you can fit.',
+      outcome: 'Discard 4 cards (this card counts as 1). Gain $700.',
+      employee: 3,
+      cost: 400,
+      type: 'Regular'
     },
     {
       id: 30,
-      name: 'Diidnd',
-      outcome: 'Improvement: Every time you shuffle your deck, gain $200',
-      employee: 1,
-      cost: 1
+      name: 'Dividend',
+      outcome: 'Every time you shuffle your deck, gain $200',
+      employee: 2,
+      cost: 300,
+      type: 'Improvement'
     },
     {
       id: 31,
       name: 'Security team',
-      outcome:
-        'Block one attack. When played on your turn (instead of as a defense), this card grants you +2 employees for one turn.\n\ncost: $1000\nEmployees: 2 (when played as a defense) / grants 2 when played on your turn',
-      employee: 1,
-      cost: 1
+      outcome: 'Can either block one attack or be played on your turn to grant +2 employees for one turn.',
+      employee: 0,
+      cost: 500,
+      type: 'Defense'
     },
     {
       id: 32,
       name: 'New virus definitions',
-      outcome:
-        'Block one attack. After doing so, place this card in front of you as an improvement. The next time another player attacks you, that attack is blocked and this card is permanently discarded. \n\ncost: $1000\nEmployees: 2',
-      employee: 1,
-      cost: 1
+      outcome: 'Block one attack. After doing so, place this card in front of you as an improvement. The next time another player attacks you, that attack is blocked and this card is permanently discarded.',
+      employee: 0,
+      cost: 400,
+      type: 'Defense'
     },
     {
       id: 33,
       name: 'You got funded, but your app sucked',
-      outcome:
-        'gain $200. When you play this card, discard it directly into the draft area. \n\nCost: $100\nEmployees: 5',
+      outcome: 'gain $200. When you play this card, discard it directly into the draft area.',
       employee: 1,
-      cost: 1
+      cost: 0,
+      type: 'Regular'
     },
     {
       id: 34,
       name: 'Lean gamma five',
       outcome: 'You may permanently discard a card from your hand.',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 35,
       name: 'Recruiting team',
-      outcome: 'Gain anemployee1]',
+      outcome: 'Gain an Employee[1]',
       employee: 1,
-      cost: 1
+      cost: 200,
+      type: 'Regular'
     },
     {
       id: 36,
       name: 'Morning coffee',
-      outcome: 'Gain $200 and +1employeethis round',
-      employee: 1,
-      cost: 1
+      outcome: 'Gain $200 and add 1 Employee[1] card to your hand this round.',
+      employee: 0,
+      cost: 400,
+      type: 'Regular'
     },
     {
       id: 37,
       name: 'Merger',
-      outcome:
-        'Your company has merged with another conglomerate. Gain 6 employees.',
-      employee: 1,
-      cost: 1
+      outcome: 'Your company has merged with another conglomerate. Gain 1 Employee[6].',
+      employee: 3,
+      cost: 800,
+      type: 'Regular'
     },
     {
       id: 38,
       name: 'Treat your employees well',
-      outcome:
-        'Discard oneemployeecard and take a newemployeecard of the next highest value. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Permanently discard oneemployeecard and add a newemployeecard of the next highest value to your discard pile.',
+      employee: 3,
+      cost: 600,
+      type: 'Regular'
     },
     {
       id: 39,
       name: 'We can do that, but better',
-      outcome:
-        'Attack: choose another player. Take the top card from their deck. You can choose to keep this card or permanently discard it. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Choose another player. Take the top card from their deck. You can choose to keep this card or permanently discard it.',
+      employee: 6,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 40,
       name: 'Fire Drill',
-      outcome:
-        'Attack. Play this card on another player\'s company. That player has 3 less employees. That player may permanently discard this card at the end of their turn. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Play this card on another player\'s company. That player must discard 3 employees before taking any actions on their next turn. That player may permanently discard this card at the end of their turn.',
+      employee: 5,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 41,
       name: 'Referral bonus',
-      employee: 1,
-      cost: 1
+      outcome: 'Get $300',
+      employee: 2,
+      cost: 100,
+      type: 'Regular'
     },
     {
       id: 42,
       name: 'Better Offer',
-      outcome:
-        'May obtain three employees from another players company, but pays $100 less ofcostto get them to that player.',
-      employee: 1,
-      cost: 1
+      outcome: 'Choose another player. That player must reveal their hand. You may purchase any Employees in their hand for half price.',
+      employee: 2,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 43,
       name: 'The churn',
-      outcome:
-        'Permanently discard anemployeecard. Depending on the value of the employees discarded, you gain the following:\n\nEmployee[1]: $500\nEmployee[3]: $1000\nEmployee[6]: $1700',
-      employee: 1,
-      cost: 1
+      outcome: 'Permanently discard anemployeecard. Depending on the value of the employees discarded, you gain the following: Employee[1]: $100 Employee[3]: $300 Employee[6]: $600',
+      employee: 0,
+      cost: 600,
+      type: 'Regular'
     },
     {
       id: 44,
       name: 'Dental plan',
-      outcome: 'Pay $300, gain 2 employees this turn',
+      outcome: 'Pay $300, add 2 Emplyee[1] cards to your hand this turn',
       employee: 1,
-      cost: 1
+      cost: 200,
+      type: 'Regular'
     },
     {
       id: 45,
       name: 'BOGO',
-      outcome:
-        'For everyemployeeyou purchase thise round, gain another for half thecost',
-      employee: 1,
-      cost: 1
+      outcome: 'For every Employee you purchase this round, gain another for half thecost',
+      employee: 0,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 46,
       name: 'Everyone shows up on time!',
-      outcome: 'Good for use to block one attack from another player',
-      employee: 1,
-      cost: 1
+      outcome: 'Block one attack from another player',
+      employee: 0,
+      cost: 400,
+      type: 'Defense'
     },
     {
       id: 47,
       name: 'It\'s all about who you know',
-      outcome:
-        'You may choose one card from the draft area. You may pay $500 regardless of itscostto gain that card. Place it directly in your hand.',
-      employee: 1,
-      cost: 1
+      outcome: 'You may choose one card from the draft area. You may pay $300 regardless of itscostto gain that card. Place it directly in your hand.',
+      employee: 2,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 48,
       name: 'Downsizing',
-      outcome:
-        'Attack. Play this card on another player\'s company. That player cannot play any cards until they discard 3 employees.',
-      employee: 1,
-      cost: 1
+      outcome: 'Play this card on another player\'s company. That player cannot play any cards until they discard 3 employees.',
+      employee: 3,
+      cost: 300,
+      type: 'Attack'
     },
     {
       id: 49,
       name: 'Virus Detected ',
-      outcome:
-        'Lose a point/improvement in your defenses/security Id if this is a notch or a card though...)',
-      employee: 1,
-      cost: 1
+      outcome: 'Permanently discard an Improvement.',
+      employee: 2,
+      cost: 200,
+      type: 'Regular'
     },
     {
       id: 50,
       name: 'Government shut down',
-      outcome:
-        'Attack. Play this card on another player\'s company. That player must pay $100 every time they play anemployeecard.',
-      employee: 1,
-      cost: 1
+      outcome: 'Play this card on another player\'s company. That player must pay $100 every time they play anemployeecard.',
+      employee: 9,
+      cost: 800,
+      type: 'Attack'
     },
     {
       id: 51,
       name: 'Sneaky Scouting',
-      outcome: 'Steal three employees from another players company. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Choos another player. That player must reveal their hand. You may steal 1 Employee[1] or 1 Employee[3] from that player. Place that card in your discard pile.',
+      employee: 0,
+      cost: 300,
+      type: 'Attack'
     },
     {
       id: 52,
       name: 'The Flu',
-      outcome: 'For the next two rounds you have five less employees.',
-      employee: 1,
-      cost: 1
+      outcome: 'Choose another player. That player must discard all Employees from their hand.',
+      employee: 3,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 53,
       name: 'Monday Meeting',
-      outcome:
-        'Improvement: Upgrade one tier of your employees to the next level. (1->3, 3->6 etc.)',
-      employee: 1,
-      cost: 1
+      outcome: 'Upgrade one of your Employees to the next level. (1->3, 3->6 etc.)',
+      employee: 3,
+      cost: 700,
+      type: 'Improvement'
     },
     {
       id: 54,
       name: 'Office Memo Re:',
-      outcome:
-        'Shuffle the community discard pile. Draw the top three cards. You must add one to your personal discard pile. ',
-      employee: 1,
-      cost: 1
+      outcome: 'Shuffle the community discard pile. Draw the top three cards. You must add one to your personal discard pile.',
+      employee: 5,
+      cost: 500,
+      type: 'Regular'
     },
     {
       id: 55,
       name: 'Unnamed 1',
-      outcome:
-        'This improvement blocks the next 3 incoming attacks, pay 500 for each turn this card is in play \n',
-      employee: 1,
-      cost: 1
+      outcome: 'Block the next 3 incoming attacks, pay $500 for each turn this card is in play. You may discard this card at any time.',
+      employee: 6,
+      cost: 200,
+      type: 'Improvement'
     },
     {
       id: 56,
       name: 'Unnamed 2',
       outcome: 'All players draw one extra card',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 57,
       name: 'Unnamed 3',
       outcome: 'Gain $300 at the start of each turn.',
-      employee: 1,
-      cost: 1
+      employee: 3,
+      cost: 500,
+      type: 'Improvement'
     },
     {
       id: 58,
       name: 'Unnamed 4',
-      outcome:
-        'play this on another improvement. the improvement requires an extra 3 employees to operate',
-      employee: 1,
-      cost: 1
+      outcome: 'Add this card to another player\'s Company. Any Improvementscost3 more Employees to deploy while this card is in play.',
+      employee: 6,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 59,
       name: 'Unnamed 5',
-      outcome:
-        'play this on another improvement. the improvement requires 3 fewer employees to operate (min of 1)',
+      outcome: 'Play this on another Improvement. The Improvement requires 3 fewer employees to operate (min of 1)',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Improvement'
     },
     {
       id: 60,
       name: 'Unnamed 6',
-      outcome: 'All Other players Draw one less card\n (min of 3)',
+      outcome: 'All other players must discard the 2 cards at random.',
       employee: 1,
-      cost: 1
+      cost: 500,
+      type: 'Attack'
     },
     {
       id: 61,
       name: 'Unnamed 7',
-      outcome: 'Discard two of your improvements for 500$',
-      employee: 1,
-      cost: 1
+      outcome: 'Discard two of your Improvements and gain 500$',
+      employee: 3,
+      cost: 200,
+      type: 'Regular'
     },
     {
       id: 62,
       name: 'Unnamed 8',
-      outcome: 'All Other players Draw one less card\n (min of 3)',
-      employee: 1,
-      cost: 1
+      outcome: 'All Other players must discard 1 card.',
+      employee: 3,
+      cost: 100,
+      type: 'Attack'
     },
     {
       id: 63,
       name: 'Unnamed 9',
-      outcome:
-        'Destroy two player improvement cards, or take one improvement card and put in your hand.',
+      outcome: 'Choose any 1 Improvement cards. The owner(s) must discard those cards. Alternatively choose 1 Improvement add it to your hand.',
       employee: 1,
-      cost: 1
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 64,
       name: 'Unnamed 10',
-      outcome: 'All Other players Draw one less card\n (min of 3)',
-      employee: 1,
-      cost: 1
+      outcome: 'All other players must draw 2 extra cards.',
+      employee: 3,
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 65,
       name: 'Unnamed 11',
-      outcome: 'keep one card from your discarded hand for  for next turn',
-      employee: 1,
-      cost: 1
+      outcome: 'keep one card from your discarded hand for the next turn',
+      employee: 2,
+      cost: 400,
+      type: 'Regular'
     },
     {
       id: 66,
       name: 'Unnamed 12',
-      outcome: 'Gainemployee6]',
-      employee: 1,
-      cost: 1
+      outcome: 'Gain 1 Employee[6]',
+      employee: 3,
+      cost: 700,
+      type: 'Regular'
     },
     {
       id: 67,
       name: 'Unnamed 13',
       outcome: 'Gainemployee1].',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Regular'
     },
     {
       id: 68,
       name: 'Unnamed 14',
       outcome: 'Gainemployee3].',
-      employee: '1',
-      cost: '1'
+      employee: '2',
+      cost: '300',
+      type: 'Regular'
     },
     {
       id: 69,
       name: 'Unnamed 15',
-      outcome: 'Permanently discard two employees. Gain $500 each turn.',
-      employee: 1,
-      cost: 1
+      outcome: 'Permanently discard 2 Employee cards (not counting the Employees used to play this card) from your hand when you deploy this Improvement. Gain $500 each turn.',
+      employee: 9,
+      cost: 700,
+      type: 'Improvement'
     },
     {
       id: 70,
       name: 'Unnamed 16',
-      outcome: 'recruit a team of 3 from another player.',
-      employee: 1,
-      cost: 1
+      outcome: 'Choose another player. That player must reveal their hand. If they have an Employee[1] or and Employee[3] in their hand, you may steal that card and add it to your discard pile.',
+      employee: 3,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 71,
       name: 'Unnamed 17',
-      outcome: 'Draw three cards. Pay 100 to keep 1 or discard them all',
+      outcome: 'Draw three cards. You may pay $100 to keep 1 card. Discard any cards not purchased.',
       employee: 1,
-      cost: 1
+      cost: 300,
+      type: 'Regular'
     },
     {
       id: 72,
       name: 'Unnamed 18',
-      outcome: 'steal $1000 from each player',
-      employee: 1,
-      cost: 1
+      outcome: 'Steal $1000 from each player',
+      employee: 15,
+      cost: 600,
+      type: 'Regular'
     },
     {
       id: 73,
       name: 'Unnamed 19',
       outcome: 'steal $500 from each player',
-      employee: 1,
-      cost: 1
+      employee: 12,
+      cost: 800,
+      type: 'Regular'
     },
     {
       id: 74,
       name: 'Unnamed 20',
-      outcome:
-        'Block all incoming attack cards played against you this round.',
-      employee: 1,
-      cost: 1
+      outcome: 'Block all incoming Attacks played against you this round.',
+      employee: 5,
+      cost: 700,
+      type: 'Regular'
     },
     {
       id: 75,
       name: 'Unnamed 21',
-      outcome: 'increase your work force by 1 each turn for 3 turns.',
-      employee: 1,
-      cost: 1
+      outcome: 'Until your next turn, all players can have a maximum of 4 cards in their hand.',
+      employee: 8,
+      cost: 500,
+      type: 'Regular'
+    },
+    {
+      id: 76,
+      name: 'Unnamed 22',
+      outcome: 'All players gain $200 each turn.',
+      employee: 6,
+      cost: 400,
+      type: 'Regular'
+    }
+  ];
+
+  const employees = [
+    {
+      id: 1,
+      name: 'Employee[1]',
+      outcome: '',
+      employee: '0',
+      cost: 100,
+      type: 'employee'
+    },
+    {
+      id: 3,
+      name: 'Employee[3]',
+      outcome: '',
+      employee: '0',
+      cost: 400,
+      type: 'employee'
+    },
+    {
+      id: 6,
+      name: 'Employee[6]',
+      outcome: '',
+      employee: '0',
+      cost: 800,
+      type: 'employee'
     }
   ];
 
@@ -576,84 +662,174 @@ let store = (function () {
       name: 'Broadband',
       outcome: 'Gain $100 at the start of every turn',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Improvement'
     },
     {
       id: 2,
       name: 'Phishing',
       outcome:
-        'Take control of another player\'s improvement card and add it to your \'base\'',
-      employee: 1,
-      cost: 1
+        'Take control of another player\'s improvement card and add it to your Company',
+      employee: 3,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 3,
       name: 'Modem',
       outcome: 'Gain $200 at the start of every turn',
-      employee: 1,
-      cost: 1
+      employee: 2,
+      cost: 300,
+      type: 'Improvement'
     },
     {
       id: 4,
       name: 'Malware',
       outcome: 'Destroy one improvement on up to two different players',
-      employee: 1,
-      cost: 1
+      employee: 6,
+      cost: 500,
+      type: 'Attack'
     },
     {
       id: 5,
       name: 'Intranet',
       outcome:
-        'At the start of each draft, draw one extra card at the top of the deck at nocost',
-      employee: 1,
-      cost: 1
+        'At the start of each draft, draw one extra card at the top of the deck at nocost You may choose whether or not to keep this card',
+      employee: 3,
+      cost: 200,
+      type: 'Improvement'
     },
     {
       id: 6,
       name: 'Firewall',
       outcome:
         'Do not play this card until you\'re being attacked.  Protects against one hacking event.',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 300,
+      type: 'Defense'
     },
     {
       id: 7,
       name: 'Cybercrime',
-      outcome: 'Steal $500 from another player\'s assets',
-      employee: 1,
-      cost: 1
+      outcome: 'Steal $500 from another player',
+      employee: 3,
+      cost: 700,
+      type: 'Attack'
     },
     {
       id: 8,
       name: 'SQL Injection',
       outcome:
-        'Play on an opponent\'s improvement. Until  this card is removed, gain 100 each time they draw a card. ',
-      employee: 1,
-      cost: 1
+        'Play on an opponent\'s Company. Until  this card is removed, gain 100 each time they draw a card. ',
+      employee: 2,
+      cost: 400,
+      type: 'Attack'
     },
     {
       id: 9,
-      name: 'Stealing Bandidh',
+      name: 'Stealing Bandwidth',
       outcome:
         'The player to your left assembles their improvement cards in their hand. Choose a card at random and add it to your hand.',
-      employee: 1,
-      cost: 1
+      employee: 0,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 10,
       name: 'LAN Party',
       outcome:
-        'Select an opponent. Remove $1000 from their account. All other players in the game receive 200$. Discard this card from the game.',
-      employee: 1,
-      cost: 1
+        'Select an opponent. Remove $1000 from their account. All other players in the game receive 200$. Permanently discard this card.',
+      employee: 7,
+      cost: 600,
+      type: 'Attack'
     },
     {
       id: 11,
       name: 'Percent of a Percent',
       outcome:
-        'Improvement- If another player were to gain more than $1000 in a single turn, the owner of this improvement would also gain $500.  ',
+        'If another player gains more than $500 in a single turn, the owner of this improvement also gains $200.  ',
+      employee: 6,
+      cost: 400,
+      type: 'Improvement'
+    },
+    {
+      id: 12,
+      name: 'Throttle Bandwidth',
+      outcome:
+        'Play this card on another player\'s Company. They can only play 1 card a turn while this card is in their Company. That player may pay $300 to permanently discard this card.',
+      employee: 6,
+      cost: 500,
+      type: 'Attack'
+    },
+    {
+      id: 13,
+      name: 'Let me talk to a live person.',
+      outcome: 'You get one free action this turn.',
+      employee: 0,
+      cost: 0,
+      type: 'Improvement'
+    },
+    {
+      id: 14,
+      name: 'Big sale',
+      outcome:
+        'While this card is in play, you only pay half the listedcostwhen drafting cards. If this card is later discarded, you must pay $500.',
+      employee: 5,
+      cost: 500,
+      type: 'Improvement'
+    },
+    {
+      id: 15,
+      name: 'Email from a Nigerian prince',
+      outcome:
+        'Place this card in a random player\'s discard pile. They must discard one Improvement currently in play, of their choosing',
+      employee: 0,
+      cost: 200,
+      type: 'Attack'
+    },
+    {
+      id: 16,
+      name:
+        'One of those racks of phones doing something online to make money',
+      outcome:
+        'On your turn, you may discard any number of cards from your hand. Place them face-down on this card after showing them to your opponents. These cards are not in play and you gain none of their stated affects. During the Get Money phase, you gain $100 for every card placed on this card.',
+      employee: 9,
+      cost: 500,
+      type: 'Improvement'
+    },
+    {
+      id: 17,
+      name: 'Bloatware',
+      outcome:
+        'May be played on any player\'s company. On their turn, they must select another player. Draw the top card from their draw pile and add it to your discard pile.',
+      employee: 4,
+      cost: 300,
+      type: 'Improvement'
+    },
+    {
+      id: 18,
+      name: 'Smart Assistant',
+      outcome: 'Draw a card once per turn.',
       employee: 1,
-      cost: 1
+      cost: 100,
+      type: 'Improvement'
+    },
+    {
+      id: 19,
+      name: 'Donate plasma',
+      outcome: 'Gain $100',
+      employee: 0,
+      cost: 0,
+      type: 'Regular'
+    },
+    {
+      id: 20,
+      name: 'If this, then that',
+      outcome:
+        'May be played at any time. When another player draws a card, discards a card, or plays a card, you may do the same action for free. Cards drawn this way can be kept until your next turn.',
+      employee: 0,
+      cost: 300,
+      type: 'Regular'
     },
   ];
 
@@ -668,6 +844,7 @@ let store = (function () {
     improvements,
     discard,
     hand,
-    masterDeck
+    masterDeck,
+    employees
   };
 })();

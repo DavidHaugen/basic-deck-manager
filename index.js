@@ -5,15 +5,19 @@
 function generateHandHtml() {
   let result = store.hand.map((card) => {
     return `
-    <div class="card flex">
+    <div class="card flex type-${card.type}">
       <div id="mydivheader">
+        <div class="card-costs flex">
+          <p class="card-cost">$${card.cost}<p>
+          <p class="employee-cost">Employees: ${card.employee}
+        </div>
         <h3>${card.name}</h3>
       </div>
       <div class="card-text">
         <p>${card.outcome}</p>
       </div>
       <div class="card-button-container">
-      <p class="card-id">Card ID: ${card.id}</>
+       <p class="card-id">Card ID: ${card.id}</p>
         <form class="improvement" data-id="${card.id}">
           <button type="submit"  id="improvement-button">Play as improvement</button>
         </form>
@@ -33,8 +37,12 @@ function generateHandHtml() {
 function generateImprovementsHtml() {
   let result = store.improvements.map((card) => {
     return `
-    <div class="card flex">
+    <div class="card flex type-${card.type}">
       <div id="mydivheader">
+       <div class="card-costs flex ">
+          <p class="card-cost">$${card.cost}<p>
+          <p class="employee-cost">Employees: ${card.employee}
+        </div>
         <h3>${card.name}</h3>
       </div>
       <div class="card-text">
@@ -85,12 +93,28 @@ function handleDrawFive(){
   });
 }
 
+function addToHand(){
+  $('.add-to-hand').on('submit', function(event){
+    event.preventDefault();
+    const idToAdd = parseInt($('#to-hand-id-input').val(), 10);
+    store.hand.push(store.masterDeck.find((card) => card.id === idToAdd));
+    const cardName = store.masterDeck.find((card) => card.id === idToAdd).name;
+    $('.message').html(`
+    <p><span class='card-name'>${cardName}</span> was added to your hand.</p><p>card ID: <span class='card-id'>${idToAdd}</span></p>
+    `);
+    $('#card-id-input').val('');
+    render();
+  });
+}
+
 function handleEndTurn(){
-  $('#end-turn').on('submit', function(event){
+  $('#end-turn').on('click', function(event){
     event.preventDefault();
     const toDiscard = store.hand.splice(0);
     toDiscard.forEach((card) => store.discard.push(card));
-    render();
+    const fiveToHand = store.deck.splice(0,5);
+    fiveToHand.forEach((item) => store.hand.push(item));
+    render();    
   });
 }
 
@@ -98,10 +122,19 @@ function handleAddCard(){
   $('.add-card').on('submit', function(event){
     event.preventDefault();
     const idToAdd = parseInt($('#card-id-input').val(), 10);
+
+    // if(store.masterDeck.find((card) => {
+    //   card.id === idToAdd;}) === undefined){
+    //   $('.message').html(`
+    //       <p>card ID <span class='card-id'>${idToAdd}</span> did not match any cards in the master deck. Please double-check the ID and try again.</p>
+    //     `);
+    //   $('#card-id-input').val('');
+    // } else{
+
     store.deck.push(store.masterDeck.find((card) => card.id === idToAdd));
     const cardName = store.masterDeck.find((card) => card.id === idToAdd).name;
     $('.message').html(`
-    <p><span class='card-name'>${cardName}</span> was added to your deck.</p><p>card id: <span class='card-id'>${idToAdd}</span></p>
+    <p><span class='card-name'>${cardName}</span> was added to your deck.</p><p>card ID: <span class='card-id'>${idToAdd}</span></p>
     `);
     $('#card-id-input').val('');
     render();
@@ -113,7 +146,15 @@ function handleRemoveCard(){
     event.preventDefault();
     const idToRemove = parseInt($('#remove-card-id-input').val(), 10);
     let cardIndex = store.deck.findIndex((card) => card.id === idToRemove);
-    if(cardIndex === -1){cardIndex = null;}
+
+    // if(cardIndex === -1){
+    //   cardIndex = null;
+    //   $('.message').html(`
+    // <p>card ID <span class='card-id'>${idToRemove}</span> did not match any cards in your deck. Please double-check the ID and try again.</p>
+    // `);
+    //   $('#remove-card-id-input').val('');
+    // } else{
+
     const cardName = store.masterDeck.find((card) => card.id === idToRemove).name;
     $('.message').html(`
     <p><span class='card-name'>${cardName}</span> was removed from your deck.</p><p>card id: <span class='card-id'>${idToRemove}</span></p>
@@ -201,6 +242,30 @@ function handlePermDiscardFromImprovements(){
   });
 }
 
+function addEmployee1(){
+  $('#employee-1').on('click', function(event){
+    event.preventDefault();
+    store.deck.push(store.employees.find((card) => card.id === 1));
+    render();
+  });
+}
+
+function addEmployee3(){
+  $('#employee-3').on('click', function(event){
+    event.preventDefault();
+    store.deck.push(store.employees.find((card) => card.id === 3));
+    render();
+  });
+}
+
+function addEmployee6(){
+  $('#employee-6').on('click', function(event){
+    event.preventDefault();
+    store.deck.push(store.employees.find((card) => card.id === 6));
+    render();
+  });
+}
+
 function handleShuffle(){
   $('#shuffle').on('submit', function(event){
     event.preventDefault();
@@ -255,6 +320,10 @@ function main(){
   handleRemoveCard();
   handleClear();
   moveToDeck();
+  addEmployee1();
+  addEmployee3();
+  addEmployee6();
+  addToHand();
 }
 
 $(main);

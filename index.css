@@ -12,6 +12,25 @@ main *{
   color: #292929;
 }
 
+.card-costs{
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.card-cost {
+  text-align: right;
+}
+
+.card p{
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.card-costs p{
+  margin: 0;
+  font-size: 14px;
+}
+
 .card{
   width: 270px;
   height: 370px;
@@ -46,6 +65,9 @@ main *{
 .card p.card-id{
   text-align: left;
   color: #d4533b;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-size: 14px;
 }
 
 #draw-five{
@@ -68,6 +90,28 @@ input{
   margin: 0; 
 }
 
+.employee-box{
+  flex-direction: column;
+  background-color: #b1bed5;
+  border-radius: 6px;
+  padding: 17px 23px;
+  height: 300px;
+  max-width: 170px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 37px;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.type-employee .employee-cost, .type-employee .card-id, .type-employee #improvement-button{
+  display: none;
+}
+
+.employee-button{
+  max-width: 200px;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -77,6 +121,32 @@ input[type=number]::-webkit-outer-spin-button {
 .card h3{
   text-align: center;
   margin-bottom: 0px;
+  margin-top: 3px;
+}
+
+.type-employee h3{
+  border: 3px solid #b4a0c9;
+  border-radius: 3px;
+}
+
+.type-Improvement h3{
+  border: 3px solid rgb(191, 196, 124);
+  border-radius: 3px;
+}
+
+.type-Attack h3{
+border: 3px solid rgb(255, 163, 163);
+border-radius: 3px;
+}
+
+.type-Regular h3{
+  border: 3px solid #959595;
+  border-radius: 3px;
+}
+
+.type-Defense h3{
+  border: 3px solid rgb(137, 194, 145);
+  border-radius: 3px;
 }
 
 #view-deck, #view-discard{
@@ -101,7 +171,7 @@ button{
   padding-bottom: 5px;
 }
 
-.remove-card{
+.remove-card, .add-to-hand{
   margin-top: 7px;
 }
 
@@ -135,7 +205,7 @@ button{
 }
 
 .message-container .card-name{
-  color: #0a3055;
+  color: #663399  ;
 }
 
 .message-container .card-id{
@@ -143,7 +213,7 @@ button{
 }
 
 .perm-discard-card button{
-  background-color: rgb(255, 163, 163)
+  background-color: rgb(251, 199, 150)
 }
 
 .controls{

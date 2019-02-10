@@ -51,13 +51,19 @@
                 
             </div>
 
+            <div class="employee-box flex">
+                <button id="employee-1" class="employee-button">Purchase Employee[1]</button>
+                <button id="employee-3" class="employee-button">Purchase Employee[3]</button>
+                <button id="employee-6" class="employee-button">Purchase Employee[6]</button>
+            </div>
+
       <div class="button-container flex">
         <div>
           <div id="add-remove-container">
             <form class="add-card">
                 <label for="add-card"></label>
                 <input type="number" name="add-card" placeholder="Enter card id" id="card-id-input">
-                <button type="submit">Add card</button>
+                <button type="submit">Add to deck</button>
 
             </form>
 
@@ -67,15 +73,22 @@
                 <input type="number" name="remove-card" placeholder="Enter card id" id="remove-card-id-input">
                 <button type="submit">Remove card</button>
             </form>
+
+            <form class="add-to-hand">
+                <label for="add-to-hand"></label>
+                <input type="number" name="add-to-hand" placeholder="Enter card id" id="to-hand-id-input">
+                <button type="submit">Add to hand</button>
+
+            </form>
           </div>
           <form id="shuffle">
               <button type="submit">Shuffle deck</button>
           </form>
         </div>
-          <form id="end-turn">
-              <button type="submit">End turn</button>
-          </form>
-      </div>
+          <button type="submit" id="end-turn">End turn</button>
+        </div>
+
+        
 
       <div class="message-container flex">
           <p class = "message"></p>
