@@ -7,7 +7,6 @@ html{
 
 main *{
   font-family: 'Space Mono', monospace;
-  position: relative;
   box-sizing: border-box;
   color: #292929;
 }
@@ -17,8 +16,28 @@ main *{
   padding: 0 6px;
 }
 
+.bank-value{
+  color: #663399;
+}
+
 .card-cost {
   text-align: right;
+}
+
+#bank-account{
+  width: 100%;
+}
+
+#bank-account label{
+  font-size: 12.6px;
+  padding-left: 1px;
+}
+
+#bank-account input{
+  /* width: 91%; */
+  max-width: 120px;
+  padding-left: 4px;
+  display: inline-block;
 }
 
 .card p{
@@ -97,10 +116,7 @@ input{
   padding: 17px 23px;
   height: 300px;
   max-width: 170px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  margin-left: 37px;
-  margin-right: auto;
+  margin: 3px 13px;
   justify-content: space-between;
 }
 
@@ -157,7 +173,6 @@ button{
   border-radius: 3px;
   border-style: none;
   background-color: rgb(218, 218, 218);
-  min-height: 30px;
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 600;
@@ -175,17 +190,21 @@ button{
   margin-top: 7px;
 }
 
+.message{
+  margin: 0;
+  margin-top: 3px;
+  width: 98%;
+  font-size: 14px;
+  overflow: auto;
+}
+
 .button-container{
   flex-direction: column;
   background-color: #b1bed5;
   border-radius: 6px;
   padding: 17px 23px;
   height: 300px;
-  min-width: 330px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3px 13px;
   justify-content: space-between;
 }
 
@@ -198,10 +217,7 @@ button{
   padding: 17px 23px;
   height: 300px;
   width: 330px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3px 13px;
 }
 
 .message-container .card-name{
@@ -228,6 +244,7 @@ button{
 
 h2{
   font-family: 'BioRhyme', serif;
+  font-size: 16px;
 }
 
 .deck{
@@ -241,9 +258,8 @@ h2{
   justify-content: space-between;
   flex: 0 1 auto;
   padding: 10px;
-  margin: 3px;
+  margin: 3px 13px;
   background-color: #f4f3f3;
-  margin-left: 37px;
 }
 
 .flex {

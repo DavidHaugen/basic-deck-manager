@@ -833,6 +833,8 @@ let store = (function () {
     },
   ];
 
+  let bank = 0;
+
   const improvements = [];
   
   const discard = [];
@@ -845,6 +847,7 @@ let store = (function () {
     discard,
     hand,
     masterDeck,
-    employees
+    employees,
+    bank
   };
 })();

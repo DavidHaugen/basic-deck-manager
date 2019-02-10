@@ -68,6 +68,20 @@ function render(){
   $('.company').html(generateImprovementsHtml());
   $('.card-count').html(`Cards in deck: ${store.deck.length}`);
   $('.discard-count').html(`Cards in discard: ${store.discard.length}`);
+  $('#bank').val(`${store.bank}`);
+}
+
+function handleBankUpdate(){
+  $('#bank-account').on('submit', function(event){
+    event.preventDefault();
+    const bankValue = $('#bank').val();
+    store.bank = bankValue;
+    $('.message').html(`
+    <p>Your account balance is now: $<span class='bank-value'>${store.bank}</span></p>
+    `);
+    $('#bank').blur();
+    render();
+  });
 }
 
 function handleDrawCard(){
@@ -100,7 +114,7 @@ function addToHand(){
     store.hand.push(store.masterDeck.find((card) => card.id === idToAdd));
     const cardName = store.masterDeck.find((card) => card.id === idToAdd).name;
     $('.message').html(`
-    <p><span class='card-name'>${cardName}</span> was added to your hand.</p><p>card ID: <span class='card-id'>${idToAdd}</span></p>
+    <p><span class='card-name'>${cardName}</span> was added to your hand.<br></p><p>card ID: <span class='card-id'>${idToAdd}</span></p>
     `);
     $('#card-id-input').val('');
     render();
@@ -113,8 +127,11 @@ function handleEndTurn(){
     const toDiscard = store.hand.splice(0);
     toDiscard.forEach((card) => store.discard.push(card));
     const fiveToHand = store.deck.splice(0,5);
-    fiveToHand.forEach((item) => store.hand.push(item));
-    render();    
+    render();
+    function newHand(){fiveToHand.forEach((item) => store.hand.push(item));
+      render();    
+    }
+    setTimeout(function() {newHand(); }, 100);
   });
 }
 
@@ -246,6 +263,10 @@ function addEmployee1(){
   $('#employee-1').on('click', function(event){
     event.preventDefault();
     store.deck.push(store.employees.find((card) => card.id === 1));
+    store.bank = store.bank - store.employees.find((card) => card.id === 1).cost;
+    $('.message').html(`
+    <p>Your account balance is now: $<span class='bank-value'>${store.bank}</span></p>
+    `);
     render();
   });
 }
@@ -254,6 +275,10 @@ function addEmployee3(){
   $('#employee-3').on('click', function(event){
     event.preventDefault();
     store.deck.push(store.employees.find((card) => card.id === 3));
+    store.bank = store.bank - store.employees.find((card) => card.id === 3).cost;
+    $('.message').html(`
+    <p>Your account balance is now: $<span class='bank-value'>${store.bank}</span></p>
+    `);
     render();
   });
 }
@@ -262,6 +287,10 @@ function addEmployee6(){
   $('#employee-6').on('click', function(event){
     event.preventDefault();
     store.deck.push(store.employees.find((card) => card.id === 6));
+    store.bank = store.bank - store.employees.find((card) => card.id === 6).cost;
+    $('.message').html(`
+    <p>Your account balance is now: $<span class='bank-value'>${store.bank}</span></p>
+    `);
     render();
   });
 }
@@ -323,6 +352,7 @@ function main(){
   addEmployee1();
   addEmployee3();
   addEmployee6();
+  handleBankUpdate();
   addToHand();
 }
 
